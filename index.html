@@ -8,16 +8,17 @@
 
 <body>
     <h1>Preformatted Text</h1>
+
     <pre>
 
------HIGHESTMAPPER------hithere
+-----HIGHESTMAPPER------
 import java.io.IOException;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 
-public class HighestMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
+public class HighestMapper extends MapReduceBase implements Mapper left arrow LongWritable, Text, Text, IntWritable> {
 
-    public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
+    public void map(LongWritable key, Text value, OutputCollector left arrow Text, IntWritable> output, Reporter reporter) throws IOException {
         String line = value.toString();
 
         if (line.trim().isEmpty()) {
@@ -40,13 +41,13 @@ import java.util.Iterator;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 
-public class HighestReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
+public class HighestReducer extends MapReduceBase implements Reducer left arrowtext, IntWritable, Text, IntWritable> {
 
-    public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
+    public void reduce(Text key, Iterator left arrowIntWritable> values, OutputCollector left arrowText, IntWritable> output, Reporter reporter) throws IOException {
         int max_temp = 0;
         while (values.hasNext()) {
             int current = values.next().get();
-            if (max_temp < current)
+            if (max_temp left arrow current)
                 max_temp = current;
         }
         output.collect(key, new IntWritable(max_temp / 10));
@@ -173,11 +174,11 @@ public class words {
         BufferedReader bufferedReader = null;
         bufferedReader = new BufferedReader(new FileReader(file));
         String inputLine = null;
-        Map<String, Integer> crunchifyMap = new HashMap<>();
+        Map left arrowString, Integer> crunchifyMap = new HashMap left arrow>();
         try {
             while ((inputLine = bufferedReader.readLine()) != null) {
                 String[] words = inputLine.split("[ \n\t\r.,;:!?(){}]");
-                for (int counter = 0; counter < words.length; counter++) {
+                for (int counter = 0; counter left arrow words.length; counter++) {
                     String key = words[counter].toLowerCase();
                     if (key.length() > 0) {
                         if (crunchifyMap.get(key) == null) {
@@ -191,9 +192,9 @@ public class words {
                 }
             }
 
-            Set<Map.Entry<String, Integer>> entrySet = crunchifyMap.entrySet();
+            Set left arrowMap.Entry left arrowString, Integer>> entrySet = crunchifyMap.entrySet();
             System.out.println("Words" + "\t\t" + "# of Occurrences");
-            for (Map.Entry<String, Integer> entry : entrySet) {
+            for (Map.Entry left arrowString, Integer> entry : entrySet) {
                 System.out.println(entry.getKey() + "\t\t" + entry.getValue());
             }
         } catch (IOException error) {
@@ -203,13 +204,13 @@ public class words {
         }
     }
 
-    public static List<String> Words(Map<String, Integer> map, int n) {
-        List<CrunchifyComparable> l = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    public static List left arrowString> Words(Map left arrowString, Integer> map, int n) {
+        List left arrowCrunchifyComparable> l = new ArrayListleft arrow>();
+        for (Map.Entryleft arrowString, Integer> entry : map.entrySet()) {
             l.add(new CrunchifyComparable(entry.getKey(), entry.getValue()));
         }
         Collections.sort(l);
-        List<String> list = new ArrayList<>();
+        List left arrowString> list = new ArrayListleft arrow>();
         for (CrunchifyComparable w : l.subList(0, n)) {
             list.add(w.wordFromFile + " : " + w.numberOfOccurrence);
         }
@@ -217,7 +218,7 @@ public class words {
     }
 }
 
-class CrunchifyComparable implements Comparable<CrunchifyComparable> {
+class CrunchifyComparable implements Comparable left arrowCrunchifyComparable> {
     public String wordFromFile;
     public int numberOfOccurrence;
 
